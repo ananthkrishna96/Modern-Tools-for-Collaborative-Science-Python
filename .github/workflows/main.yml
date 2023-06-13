@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Singularity container
-        run: singularity build aksing.sif Singularity.recipe
+        run: singularity build aksing.sif ../Singularity.recipe
 
       - name: Run tests in Singularity container
         run: singularity exec aksing.sif python promnist.py
