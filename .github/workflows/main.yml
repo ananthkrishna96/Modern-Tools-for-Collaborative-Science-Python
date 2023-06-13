@@ -1,0 +1,17 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Singularity container
+        run: singularity build aksingularity.sif Singularity.recipe
+
+      - name: Run tests in Singularity container
+        run: singularity exec aksingularity.sif python promnist.py
