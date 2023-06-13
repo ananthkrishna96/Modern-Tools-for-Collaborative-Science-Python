@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: python:3.9
+
+%post
+    apt-get update
+    apt-get install -y build-essential
+
+%runscript
+    exec python promnist.py
