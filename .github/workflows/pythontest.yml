@@ -2,11 +2,7 @@ name: Python Test with Docker
 
 on:
   push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   test:
