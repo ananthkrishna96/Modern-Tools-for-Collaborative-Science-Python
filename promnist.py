@@ -1,13 +1,11 @@
-import timeit
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
 from scipy import interpolate
 from scipy import integrate
 
-%pylab inline
 
-arc = load('mnist.npz')
+arc = np.load('mnist.npz')
 
 x_train = arc['arr_0']
 y_train = arc['arr_1']
