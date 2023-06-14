@@ -1,0 +1,15 @@
+
+*.pyc
+__pycache__/
+
+venv/
+.env
+
+.vscode/
+
+# Ignore log files
+*.log
+
+# /path/to/excluded/file
+
+
