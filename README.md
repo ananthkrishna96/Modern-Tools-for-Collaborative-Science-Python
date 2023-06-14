@@ -1,7 +1,7 @@
 # An Introduction to Modern Tools for Collaborative Science 
-##Project Description
+#Project Description
 This project aims to provide an introduction to modern tools for collaborative science.
-## Course Objectives
+#Course Objectives
 Set up a collaborative environment for scientific research.
 Improve efficiency and safety in individual and team work.
 Foster reproducibility and transparency in research workflows.
