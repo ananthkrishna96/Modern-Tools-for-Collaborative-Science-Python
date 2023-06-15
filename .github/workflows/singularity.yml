@@ -24,13 +24,8 @@ jobs:
 
       - name: Install Singularity
         run: |
-          VERSION=3.8.3
-          wget https://github.com/sylabs/singularity/releases/download/v${VERSION}/singularity-${VERSION}.tar.gz
-          tar -xzf singularity-${VERSION}.tar.gz
-          cd singularity
-          ./configure --prefix=/usr/local
-          make
-          sudo make install
+          sudo apt-get update
+          sudo apt-get install -y singularity-container
 
       - name: Pull Singularity container
         run: singularity pull docker://ananthkrishna96/akdkrmnist:latest
