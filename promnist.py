@@ -1,8 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: Anantha Krishnan O M
+"""
+
+# Compute the distance matrix and compute the efficiency associated to the distance matrix for MNIST data
+
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy
-from scipy import interpolate
-from scipy import integrate
 
 
 arc = np.load('mnist.npz')
@@ -11,11 +16,6 @@ x_train = arc['arr_0']
 y_train = arc['arr_1']
 x_test  = arc['arr_2']
 y_test  = arc['arr_3']
-
-#print(x_train.shape, y_train.shape)
-#print(x_test.shape, y_test.shape)
-
-#Distance between Images
 
 def d_infty(a, b):
     return np.max(np.abs(b - a))
@@ -35,7 +35,31 @@ def dist_mat(N, dist, x_train):
             Dis[j, i] = d
     return Dis
 
-#Compute for first 100 images
+def alg_efficiency(D, y_train):
+    N = D.shape[0]
+    error_counter = 0
+    for i in range(N):
+        j = np.argmin((D[i]))
+        if j == i:
+            j = np.argsort(D[i])[1]
+        if y_train[j] != y_train[i]:
+            error_counter += 1
+    return error_counter / N
+
+Nvalues = [100, 200, 400, 800, 1600]
+errors = np.zeros((len(Nvalues), 3))
+for i, N in enumerate(Nvalues):
+    Dinfty = dist_mat(N, d_infty, x_train) #x_train
+    D1 = dist_mat(N, d_one, x_train)
+    D2 = dist_mat(N, d_two, x_train) 
+    
+    Erinfty = alg_efficiency(Dinfty, y_train[:N]) #y_train
+    Er1 = alg_efficiency(D1, y_train[:N])
+    Er2 = alg_efficiency(D2, y_train[:N]) 
+    errors[i] = [Erinfty, Er1, Er2]
+print("Error Matrix: \n",errors,"\n")
+
+#Plot for first 100 images
 N = 100
 Dinfty = dist_mat(N, d_infty, x_train)
 D1 = dist_mat(N, d_one, x_train)

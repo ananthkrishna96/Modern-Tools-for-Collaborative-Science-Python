@@ -9,5 +9,5 @@ COPY promnist.py /
 COPY testcode.py /
 COPY . .
 
-CMD ["python", "testcode.py"]
+CMD ["python", "promnist.py"]
 
